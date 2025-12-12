@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  padding: 10px;
+  background-color: #1e1e1e;
+  color: white;
+  height: 90vh;
+}
+
+.map-container {
+  width: 75%;
+  height: 100%;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.sidebar {
+  width: 25%;
+  height: 100%;
+  background-color: #2b2b2b;
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+}
+
+.search-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-row input {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  width: 90%;
+}
+
+.spinner {
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top: 6px solid #00aaff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.result-card {
+  width: 100%;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.result-card p {
+  margin: 10px 0;
+  font-size: 16px;
+  border-bottom: 1px solid gray;
+  padding-bottom: 5px;
+}
+
