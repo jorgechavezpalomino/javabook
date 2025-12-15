@@ -1,0 +1,37 @@
+<div class="container">
+  <div id="map" class="map-container"></div>
+
+  <div class="sidebar">
+    <h2>Weather World</h2>
+
+    <div class="search-row">
+      <input
+        placeholder="Latitude"
+        [value]="lat()"
+        readonly
+      />
+
+      <input
+        placeholder="Longitude"
+        [value]="lon()"
+        readonly
+      />
+    </div>
+
+    @if (loading()) {
+        <div class="spinner"></div>
+    } @else {
+        <div class="result-card">
+            <p>
+              <strong>City:</strong> {{data().city}}
+            </p>
+            <p>
+              <strong>Temp:</strong> {{data().temperature}}
+            </p>
+            <p>
+              <strong>Hmd:</strong> {{data().humidity}}
+            </p>
+        </div>
+    }
+  </div>
+</div>
