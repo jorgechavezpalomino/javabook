@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { icon, Marker } from 'leaflet';
 
 const iconDefault = icon({
+  //to solve leaflet bug
   iconRetinaUrl: 'assets/marker-icon-2x.png',
   iconUrl: 'assets/marker-icon.png',
   shadowUrl: 'assets/marker-shadow.png',
@@ -25,7 +26,6 @@ Marker.prototype.options.icon = iconDefault;
 export class Weather implements AfterViewInit {
   lat = signal('');
   lon = signal('');
-
   loading = signal(false);
 
   data = signal({
