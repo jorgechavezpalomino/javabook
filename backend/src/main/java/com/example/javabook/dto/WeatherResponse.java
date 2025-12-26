@@ -1,7 +1,7 @@
 package com.example.javabook.dto;
 
 public record WeatherResponse(
-        String city,
-        String temperature,
-        String humidity
+  String city,
+  String temperature,
+  String humidity
 ) {}
