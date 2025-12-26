@@ -12,15 +12,17 @@ public class WeatherService {
   @Value("${weatherApi.key}")
   private String apiKey;
 
-  @Value("${weatherApi.url}")
-  private String apiUrl;
-
   RestClient client = RestClient.create();
 
   public WeatherResponse getWeather(double lat, double lon) {
     WeatherApiResponse data = client
       .get()
-      .uri(apiUrl + "?key={key}&q={lat},{lon}", apiKey, lat, lon)
+      .uri(
+        "https://api.weatherapi.com/v1/current.json?key={key}&q={lat},{lon}",
+        apiKey,
+        lat,
+        lon
+      )
       .retrieve()
       .body(WeatherApiResponse.class);
 
