@@ -76,7 +76,7 @@ export class Weather implements AfterViewInit {
 
   fetchWeather(lat: string, lon: string) {
     this.loading.set(true);
-    const url = `http://localhost:8080/weather?lat=${lat}&lon=${lon}`;
+    const url = `http://localhost:8080/api/weather?lat=${lat}&lon=${lon}`;
     this.http.get(url).subscribe({
       next: (res: any) => {
         this.data.set(res);
