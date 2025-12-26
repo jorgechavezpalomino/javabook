@@ -6,37 +6,28 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
-import java.util.Map;
-
 @Service
 public class WeatherService {
 
-    @Value("${weatherApi.key}")
-    private String apiKey;
+  @Value("${weatherApi.key}")
+  private String apiKey;
 
-    @Value("${weatherApi.url}")
-    private String apiUrl;
+  @Value("${weatherApi.url}")
+  private String apiUrl;
 
-    RestClient client = RestClient.create();
+  RestClient client = RestClient.create();
 
-    public WeatherResponse getWeather(double lat, double lon) {
+  public WeatherResponse getWeather(double lat, double lon) {
+    WeatherApiResponse data = client
+      .get()
+      .uri(apiUrl + "?key={key}&q={lat},{lon}", apiKey, lat, lon)
+      .retrieve()
+      .body(WeatherApiResponse.class);
 
-
-        WeatherApiResponse data = client.get()
-
-        .uri(
-            apiUrl+"?key={key}&q={lat},{lon}",
-            apiKey,
-            lat,
-            lon
-        )
-        .retrieve()
-        .body(WeatherApiResponse.class);
-
-        return new WeatherResponse(
-            data.getLocation().getName(),
-            data.getCurrent().getTemp_c() + "°C",
-            data.getCurrent().getHumidity() + "%"
-        );
-    }
+    return new WeatherResponse(
+      data.getLocation().getName(),
+      data.getCurrent().getTemp_c() + "°C",
+      data.getCurrent().getHumidity() + "%"
+    );
+  }
 }

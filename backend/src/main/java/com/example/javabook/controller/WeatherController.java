@@ -11,29 +11,27 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class WeatherController {
 
-    private final WeatherService service;
+  private final WeatherService service;
 
-    public WeatherController(WeatherService service) {
-        this.service = service;
+  public WeatherController(WeatherService service) {
+    this.service = service;
+  }
+
+  @GetMapping("/test")
+  public ResponseEntity<MessageResponse> test() {
+    return ResponseEntity.ok(new MessageResponse("server listening"));
+  }
+
+  @GetMapping
+  public ResponseEntity<?> getWeather(
+    @RequestParam(required = false) Double lat,
+    @RequestParam(required = false) Double lon
+  ) {
+    if (lat == null || lon == null) {
+      return ResponseEntity.badRequest()
+        .body(new MessageResponse("lat and lon required"));
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<MessageResponse> test() {
-        return ResponseEntity.ok(new MessageResponse("server listening"));
-    }
-
-    @GetMapping
-    public ResponseEntity<?> getWeather(
-            @RequestParam(required = false) Double lat,
-            @RequestParam(required = false) Double lon
-    ) {
-
-        if (lat == null || lon == null) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("lat and lon required"));
-        }
-
-        return ResponseEntity.ok(service.getWeather(lat, lon));
-    }
+    return ResponseEntity.ok(service.getWeather(lat, lon));
+  }
 }
