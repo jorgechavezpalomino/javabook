@@ -65,20 +65,6 @@ The backend is contained using Docker.
 
 1. **Backend**
 
-- Replace the code in the Dockerfile:
-
-    ```
-    FROM eclipse-temurin:21-jre-alpine
-
-    WORKDIR /app
-
-    COPY target/*.jar app.jar
-
-    EXPOSE 8080
-
-    ENTRYPOINT ["java","-jar","app.jar"]
-    ```
-
 2. **Frontend**
 
 - Open a new terminal and start the frontend dev server:
