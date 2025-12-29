@@ -23,19 +23,6 @@ The backend is contained using Docker.
     weatherApi.key=your_weather_api_key
     ```
 
-- Build the backend application:
-
-    ```
-    cd backend
-    mvn clean package
-    ```
-
-- Build the Docker image for the backend:
-
-    ```
-    docker build -t javabook-backend .
-    ```
-
 - Install frontend dependencies:
 
     ```
@@ -48,15 +35,22 @@ The backend is contained using Docker.
 
 1. **Backend**
 
+- Build the Docker image for the backend:
+
+    ```
+    cd backend
+    docker build -t spring-dev .
+    ```
+
 - Run the backend container:
 
     - Option 1: Run in foreground
 
-        `docker run -p 8080:8080 javabook-backend`
+        `docker run --name spring-dev -p 8080:8080 -v "${PWD}:/app" spring-dev`
 
     - Option 2: Run in detached mode
 
-        `docker run -d -p 8080:8080 --name javabook-backend javabook`
+        `docker run -d --name spring-dev -p 8080:8080 -v "${PWD}:/app" spring-dev`
 
 2. **Frontend**
 
@@ -66,4 +60,30 @@ The backend is contained using Docker.
     cd frontend
     ng serve
     ```
+
 ## Run in production
+
+1. **Backend**
+
+- Replace the code in the Dockerfile:
+
+    ```
+    FROM eclipse-temurin:21-jre-alpine
+
+    WORKDIR /app
+
+    COPY target/*.jar app.jar
+
+    EXPOSE 8080
+
+    ENTRYPOINT ["java","-jar","app.jar"]
+    ```
+
+2. **Frontend**
+
+- Open a new terminal and start the frontend dev server:
+
+    ```
+    cd frontend
+    ng serve
+    ```

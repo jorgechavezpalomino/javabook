@@ -2,6 +2,7 @@ import { Component, AfterViewInit, signal } from '@angular/core';
 import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { icon, Marker } from 'leaflet';
+import { environment } from '../../environments/environment';
 
 const iconDefault = icon({
   //to solve leaflet bug
@@ -37,6 +38,7 @@ export class Weather implements AfterViewInit {
   map!: L.Map;
   marker!: L.Marker;
 
+  private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
   ngAfterViewInit(): void {
@@ -76,7 +78,7 @@ export class Weather implements AfterViewInit {
 
   fetchWeather(lat: string, lon: string) {
     this.loading.set(true);
-    const url = `http://localhost:8080/api/weather?lat=${lat}&lon=${lon}`;
+    const url = `${this.apiUrl}/api/weather?lat=${lat}&lon=${lon}`;
     this.http.get(url).subscribe({
       next: (res: any) => {
         this.data.set(res);

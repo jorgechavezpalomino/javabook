@@ -1,7 +1,6 @@
 package com.example.javabook.controller;
 
 import com.example.javabook.dto.MessageResponse;
-import com.example.javabook.dto.WeatherResponse;
 import com.example.javabook.service.WeatherService;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class WeatherController {
 
   @GetMapping("/test")
   public ResponseEntity<MessageResponse> test() {
-    return ResponseEntity.ok(new MessageResponse("server listening"));
+    return ResponseEntity.ok(new MessageResponse("Server listening"));
   }
 
   @GetMapping

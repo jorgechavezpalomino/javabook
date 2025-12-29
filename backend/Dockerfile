@@ -1,9 +1,9 @@
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 
-COPY target/*.jar app.jar
+RUN apk add --no-cache maven
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","app.jar"]
+CMD ["mvn","spring-boot:run"]
