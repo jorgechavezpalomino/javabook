@@ -1,12 +1,19 @@
 # javabook
 
 The project uses Spring boot in backend and Angular in frontend.
-The backend is contained using Docker.
+
+The backend is containerized with Docker and deployed on Render.
+
+## Test
+
+You can test the web application here:
+https://frontend-j5t1.onrender.com
 
 ## Features
 
 - Check weather information in different locations
 - Local and production-ready configuration
+- Backend containerized using Docker
 
 ## Installation
 
@@ -15,12 +22,6 @@ The backend is contained using Docker.
     ```
     git clone https://github.com/jorgechavezpalomino/javabook
     cd javabook
-    ```
-- The backend uses a third-party API (https://www.weatherapi.com/). You need to log in and save your API key in a "application.properties" file in the backend folder.
-
-    ```
-    spring.application.name=javabook
-    weatherApi.key=your_weather_api_key
     ```
 
 - Install frontend dependencies:
@@ -35,11 +36,25 @@ The backend is contained using Docker.
 
 1. **Backend**
 
+- The backend uses a third-party API (https://www.weatherapi.com/).
+
+Create a local "application.properties" file at:
+
+backend/src/main/resources/application.properties
+
+With the following content:
+
+    ```
+    server.port=${PORT:8080}
+    spring.application.name=javabook
+    weatherApi.key=your_weather_api_key
+    ```
+
 - Build the Docker image for the backend:
 
     ```
     cd backend
-    docker build -t spring-dev .
+    docker build -f Dockerfile.local -t spring-dev .
     ```
 
 - Run the backend container:
@@ -65,11 +80,23 @@ The backend is contained using Docker.
 
 1. **Backend**
 
-2. **Frontend**
+The backend is deployed on Render using Docker.
 
-- Open a new terminal and start the frontend dev server:
+- Add the following environment variables in the Render dashboard:
 
     ```
-    cd frontend
-    ng serve
+    FRONTEND_URL=your_frontend_url
+    PORT=8080
+    WEATHERAPI_KEY=your_weather_api_key
+    ```
+
+2. **Frontend**
+
+- Update the API URL in "environment.prod.ts":
+
+    ```
+    export const environment = {
+        production: true,
+        apiUrl: 'https://your-backend-url.onrender.com'
+    };
     ```
