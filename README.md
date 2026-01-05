@@ -38,11 +38,11 @@ https://frontend-j5t1.onrender.com
 
 - The backend uses a third-party API (https://www.weatherapi.com/).
 
-Create a local "application.properties" file at:
+    Create a local "application.properties" file at:
 
-backend/src/main/resources/application.properties
+    backend/src/main/resources/application.properties
 
-With the following content:
+    With the following content:
 
     ```
     server.port=${PORT:8080}
@@ -80,7 +80,7 @@ With the following content:
 
 1. **Backend**
 
-The backend is deployed on Render using Docker.
+    The backend is deployed on Render using Docker.
 
 - Add the following environment variables in the Render dashboard:
 
