@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/weather")
-@CrossOrigin("https://frontend-j5t1.onrender.com")
 public class WeatherController {
 
   private final WeatherService service;
@@ -18,7 +17,7 @@ public class WeatherController {
 
   @GetMapping("/test")
   public ResponseEntity<MessageResponse> test() {
-    return ResponseEntity.ok(new MessageResponse("Server listening"));
+    return ResponseEntity.ok(new MessageResponse("Server Popping"));
   }
 
   @GetMapping
