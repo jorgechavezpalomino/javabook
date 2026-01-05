@@ -18,7 +18,7 @@ public class WeatherController {
 
   @GetMapping("/test")
   public ResponseEntity<MessageResponse> test() {
-    return ResponseEntity.ok(new MessageResponse("Server Popping"));
+    return ResponseEntity.ok(new MessageResponse("Server Listening"));
   }
 
   @GetMapping
