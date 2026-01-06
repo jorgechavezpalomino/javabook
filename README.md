@@ -27,7 +27,6 @@ https://frontend-j5t1.onrender.com
 - Install frontend dependencies:
 
     ```
-    cd ..
     cd frontend
     npm install
     ```
@@ -48,12 +47,12 @@ https://frontend-j5t1.onrender.com
     server.port=${PORT:8080}
     spring.application.name=javabook
     weatherApi.key=your_weather_api_key
+    weatherApi.url=https://api.weatherapi.com/v1/current.json
     ```
 
 - Build the Docker image for the backend:
 
     ```
-    cd backend
     docker build -f Dockerfile.local -t spring-dev .
     ```
 

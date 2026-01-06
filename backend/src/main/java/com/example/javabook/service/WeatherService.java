@@ -9,10 +9,16 @@ import org.springframework.web.client.RestClient;
 @Service
 public class WeatherService {
 
+  private final RestClient client;
+
   @Value("${weatherApi.key}")
   private String apiKey;
 
-  RestClient client = RestClient.create();
+  //RestClient client = RestClient.create();
+
+  public WeatherService(RestClient client) {
+    this.client = client;
+  }
 
   public WeatherResponse getWeather(double lat, double lon) {
     WeatherApiResponse data = client
