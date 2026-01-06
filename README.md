@@ -83,7 +83,6 @@ https://frontend-j5t1.onrender.com
 
     ```
     FRONTEND_URL=your_frontend_url
-    PORT=8080
     WEATHERAPI_KEY=your_weather_api_key
     ```
 
