@@ -27,7 +27,6 @@ https://frontend-j5t1.onrender.com
 - Install frontend dependencies:
 
     ```
-    cd ..
     cd frontend
     npm install
     ```
@@ -38,15 +37,13 @@ https://frontend-j5t1.onrender.com
 
 - The backend uses a third-party API (https://www.weatherapi.com/).
 
-    Create a local "application.properties" file at:
+    Update "application.properties" file at:
 
     backend/src/main/resources/application.properties
 
-    With the following content:
+    With your api key
 
     ```
-    server.port=${PORT:8080}
-    spring.application.name=javabook
     weatherApi.key=your_weather_api_key
     ```
 
