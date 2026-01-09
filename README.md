@@ -99,3 +99,33 @@ https://frontend-j5t1.onrender.com
         apiUrl: 'https://your-backend-url.onrender.com'
     };
     ```
+
+## Unit test and e2e test
+
+This project includes automated tests to validate both backend logic and frontend behavior.
+
+1. **Backend Unit test**
+
+Unit tests are written using JUnit 5 and Spring Boot test slices.
+
+No real HTTP calls are made during unit tests.
+
+
+    ```
+    cd backend
+    ./mvnw test
+    ```
+
+1. **Frontend End-to-End test**
+
+End-to-end tests are written using Playwright.
+
+The tests simulate real user interactions in the browser.
+
+- E2E tests do not mock backend behavior and rely on the backend being available
+
+   ```
+    cd frontend
+    npx playwright test
+   ```
+

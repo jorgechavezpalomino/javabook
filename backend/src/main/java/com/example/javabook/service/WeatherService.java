@@ -8,6 +8,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+@Configuration
+class RestClientConfig {
+
+  @Bean
+  RestClient restClient(RestClient.Builder builder) {
+    return builder.build();
+  }
+}
+
 @Service
 public class WeatherService {
 
@@ -15,15 +24,6 @@ public class WeatherService {
 
   @Value("${weatherApi.key}")
   private String apiKey;
-
-  @Configuration
-  static class RestClientConfig {
-
-    @Bean
-    RestClient restClient(RestClient.Builder builder) {
-      return builder.build();
-    }
-  }
 
   //RestClient client = RestClient.create();
 
