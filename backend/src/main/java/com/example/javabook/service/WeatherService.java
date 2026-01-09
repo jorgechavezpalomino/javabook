@@ -3,6 +3,8 @@ package com.example.javabook.service;
 import com.example.javabook.dto.WeatherResponse;
 import com.example.javabook.dto.api.WeatherApiResponse;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -13,6 +15,15 @@ public class WeatherService {
 
   @Value("${weatherApi.key}")
   private String apiKey;
+
+  @Configuration
+  static class RestClientConfig {
+
+    @Bean
+    RestClient restClient(RestClient.Builder builder) {
+      return builder.build();
+    }
+  }
 
   //RestClient client = RestClient.create();
 

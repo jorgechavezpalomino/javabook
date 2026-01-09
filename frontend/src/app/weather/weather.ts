@@ -84,12 +84,6 @@ export class Weather implements AfterViewInit {
         this.data.set(res);
         this.loading.set(false);
       },
-
-      error: (err) => {
-        console.error(err);
-        alert('Error getting weather');
-        this.loading.set(false);
-      },
     });
   }
 }
